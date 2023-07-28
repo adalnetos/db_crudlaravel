@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
+/*use Symfony\Contracts\Service\Attribute\Required;*/
+
 
 
 class Produtocontroller extends Controller
@@ -16,7 +18,7 @@ class Produtocontroller extends Controller
      */
     public function index(): View 
     {
-        $produtos = Produto::latest()->pagination(5);
+        $produtos = Produto::latest()->paginate(5);
         return view('produtos.index', compact('produtos'))
             ->with('i',(request()->input('page', 1)-1)*5);
     }
@@ -42,7 +44,7 @@ class Produtocontroller extends Controller
 
         ]);
 
-        Produto::created($request->all());
+        Produto::create($request->all());
         return redirect()->route('produtos.index')
                         ->with('success', 'Produto criado com sucesso.');
     }
@@ -60,7 +62,7 @@ class Produtocontroller extends Controller
      */
     public function edit(Produto $produto): View
     {
-        return view('produto.edit', compact('produto'));
+        return view('produtos.edit', compact('produto'));
     }
 
     /**
