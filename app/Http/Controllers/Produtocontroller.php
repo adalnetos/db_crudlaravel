@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
-/*use Symfony\Contracts\Service\Attribute\Required;*/
+use Symfony\Contracts\Service\Attribute\Required;
 
 
 
